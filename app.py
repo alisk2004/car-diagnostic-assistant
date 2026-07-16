@@ -118,7 +118,8 @@ def api_history_detail(session_id):
 
     results = conn.execute(
         "SELECT dr.confidence, dr.rank, dr.matched_symptoms_json, dr.matched_codes_json, "
-        "f.name, f.description, f.severity, f.recommended_action "
+        "f.name, f.description, f.severity, f.recommended_action, "
+        "f.causal_explanation, f.repair_steps_json, f.difficulty, f.estimated_cost, f.estimated_time "
         "FROM diagnostic_results dr JOIN faults f ON f.id = dr.fault_id "
         "WHERE dr.session_id = ? ORDER BY dr.rank",
         (session_id,),
@@ -134,6 +135,7 @@ def api_history_detail(session_id):
         result = dict(row)
         result["matched_symptoms"] = json.loads(result.pop("matched_symptoms_json"))
         result["matched_codes"] = json.loads(result.pop("matched_codes_json"))
+        result["repair_steps"] = json.loads(result.pop("repair_steps_json")) if result["repair_steps_json"] else []
         result_dicts.append(result)
     session_dict["results"] = result_dicts
     return jsonify(session_dict)

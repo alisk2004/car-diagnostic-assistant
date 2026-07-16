@@ -110,8 +110,50 @@ function severityCard(result) {
     <p class="result-description">${result.description}</p>
     <p class="result-action"><strong>Recommended action:</strong> ${result.recommended_action}</p>
     <div class="matched-tags">${matchedTags}</div>
+    <button type="button" class="assistant-toggle">&#128172; Ask the assistant about this fix</button>
   `;
+
+  const toggleBtn = card.querySelector('.assistant-toggle');
+  toggleBtn.addEventListener('click', () => {
+    const existingPanel = card.querySelector('.assistant-panel');
+    if (existingPanel) {
+      existingPanel.remove();
+      toggleBtn.textContent = '\u{1F4AC} Ask the assistant about this fix';
+      return;
+    }
+    toggleBtn.textContent = '\u{1F4AC} Hide assistant panel';
+    card.appendChild(buildAssistantPanel(result));
+  });
+
   return card;
+}
+
+function buildAssistantPanel(result) {
+  const panel = document.createElement('div');
+  panel.className = 'assistant-panel';
+
+  const stepsHtml = (result.repair_steps || [])
+    .map((step) => `<li>${step}</li>`)
+    .join('');
+
+  panel.innerHTML = `
+    <div class="chat-bubble">
+      <div class="chat-question">Q: How is this linked to what I reported?</div>
+      <div class="chat-answer">${result.causal_explanation || 'No further detail available for this fault.'}</div>
+    </div>
+    <div class="chat-bubble">
+      <div class="chat-question">Q: How do I fix it?</div>
+      <div class="chat-answer">
+        <ol class="repair-steps">${stepsHtml}</ol>
+        <div class="fix-meta">
+          <span class="meta-chip">Difficulty: ${result.difficulty || 'N/A'}</span>
+          <span class="meta-chip">Est. cost: ${result.estimated_cost || 'N/A'}</span>
+          <span class="meta-chip">Est. time: ${result.estimated_time || 'N/A'}</span>
+        </div>
+      </div>
+    </div>
+  `;
+  return panel;
 }
 
 async function runDiagnosis() {

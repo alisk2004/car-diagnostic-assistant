@@ -15,6 +15,10 @@ trouble codes (DTCs), backed by a SQLite database of vehicle knowledge.
 - **Explainable AI reasoning engine** — every result shows a confidence
   percentage plus exactly which symptoms/codes drove that score, and a
   recommended action with a severity rating (Low/Medium/High/Critical).
+- **"Ask the assistant" info panel** — click through on any result for a
+  chat-style breakdown of *why* that fault is linked to your symptoms/codes,
+  plus step-by-step repair instructions, difficulty level, and estimated
+  cost/time.
 - **History** — every diagnosis is saved to the database and can be
   reviewed later.
 

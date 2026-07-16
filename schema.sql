@@ -18,7 +18,12 @@ CREATE TABLE IF NOT EXISTS faults (
     name TEXT NOT NULL UNIQUE,
     description TEXT NOT NULL,
     severity TEXT NOT NULL CHECK (severity IN ('Low', 'Medium', 'High', 'Critical')),
-    recommended_action TEXT NOT NULL
+    recommended_action TEXT NOT NULL,
+    causal_explanation TEXT,
+    repair_steps_json TEXT,
+    difficulty TEXT,
+    estimated_cost TEXT,
+    estimated_time TEXT
 );
 
 CREATE TABLE IF NOT EXISTS fault_symptoms (

@@ -7,6 +7,8 @@ defined for that fault) * 100. This keeps the reasoning fully explainable:
 you can always point to exactly which symptoms/codes drove a given score.
 """
 
+import json
+
 from database import get_connection
 
 
@@ -63,12 +65,18 @@ def diagnose(symptom_ids=None, dtc_codes=None, conn=None):
         if matched_weight <= 0 or total <= 0:
             continue
         fault = fault_by_id[fault_id]
+        repair_steps = json.loads(fault["repair_steps_json"]) if fault["repair_steps_json"] else []
         results.append({
             "fault_id": fault_id,
             "name": fault["name"],
             "description": fault["description"],
             "severity": fault["severity"],
             "recommended_action": fault["recommended_action"],
+            "causal_explanation": fault["causal_explanation"],
+            "repair_steps": repair_steps,
+            "difficulty": fault["difficulty"],
+            "estimated_cost": fault["estimated_cost"],
+            "estimated_time": fault["estimated_time"],
             "confidence": round((matched_weight / total) * 100, 1),
             "matched_symptoms": matched_symptoms[fault_id],
             "matched_codes": matched_codes[fault_id],
