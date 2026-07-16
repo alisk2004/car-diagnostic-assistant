@@ -96,17 +96,21 @@ pytest
 
 ## Team Contributions
 
-| Member | Contribution |
-|---|---|
-| _Name 1_ | _e.g. Diagnosis engine + Flask backend/API_ |
-| _Name 2_ | _e.g. Frontend UI (HTML/CSS/JS)_ |
-| _Name 3_ | _e.g. Database schema, seed content, and tests_ |
+| Member | Contribution | Files owned |
+|---|---|---|
+| _Name 1_ | Backend / API | `app.py`, `database.py` |
+| _Name 2_ | AI reasoning engine + testing | `diagnosis_engine.py`, `tests/test_engine.py` |
+| _Name 3_ | Frontend UI | `templates/index.html`, `static/style.css`, `static/app.js` |
+| _Name 4_ | Database content + docs | `schema.sql`, `seed_data.py`, `README.md` |
 
 ### Suggested video presentation split
 
-- **Member 1**: Introduce the project + explain the rule-based reasoning
-  engine (`diagnosis_engine.py`) — how confidence scores are calculated.
-- **Member 2**: Demo the frontend live — run a symptom-based diagnosis and an
+- **Member 1**: Introduce the project, then walk through the Flask backend
+  and API routes (`app.py`) that tie everything together.
+- **Member 2**: Explain the rule-based reasoning engine (`diagnosis_engine.py`)
+  — how confidence scores are calculated — and show the test suite (`pytest`)
+  that verifies it.
+- **Member 3**: Demo the frontend live — run a symptom-based diagnosis and an
   OBD-II code diagnosis.
-- **Member 3**: Walk through the database schema, seed data, and the test
-  suite (`pytest`) that verifies the engine's correctness.
+- **Member 4**: Walk through the database schema and seed data (real
+  symptoms, DTC codes, and faults) that power the whole system.
