@@ -61,8 +61,8 @@ tests/test_engine.py    # pytest tests for the reasoning engine
 
 ```bash
 # 1. Clone the repository
-git clone <your-repo-url>
-cd "MINI PROJECT CAR DIAGNOSTIC"
+git clone https://github.com/alisk2004/car-diagnostic-assistant.git
+cd car-diagnostic-assistant
 
 # 2. Create a virtual environment
 python -m venv venv
