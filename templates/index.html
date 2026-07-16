@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Diagnostic Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="app-header">
+    <h1>&#128663; Car Diagnostic Assistant</h1>
+    <p class="subtitle">Rule-based expert system for symptom &amp; OBD-II code diagnosis</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="symptoms">Symptom Checker</button>
+    <button class="tab-btn" data-tab="codes">OBD-II Lookup</button>
+    <button class="tab-btn" data-tab="history">History</button>
+  </nav>
+
+  <main class="container">
+
+    <section id="tab-symptoms" class="tab-panel active">
+      <h2>Vehicle Info <span class="optional">(optional)</span></h2>
+      <div class="vehicle-form">
+        <input type="text" id="vehicle-make" placeholder="Make (e.g. Toyota)">
+        <input type="text" id="vehicle-model" placeholder="Model (e.g. Corolla)">
+        <input type="text" id="vehicle-year" placeholder="Year (e.g. 2015)">
+      </div>
+
+      <h2>Select Symptoms</h2>
+      <div id="symptom-groups" class="symptom-groups">
+        <p class="loading">Loading symptoms&hellip;</p>
+      </div>
+    </section>
+
+    <section id="tab-codes" class="tab-panel">
+      <h2>OBD-II Code Lookup</h2>
+      <input type="text" id="code-search" placeholder="Search by code or description (e.g. P0420 or misfire)">
+      <div id="code-results" class="code-results"></div>
+    </section>
+
+    <section id="tab-history" class="tab-panel">
+      <h2>Past Diagnostic Sessions</h2>
+      <div id="history-list" class="history-list"></div>
+      <div id="history-detail" class="history-detail"></div>
+    </section>
+
+    <div class="selection-bar">
+      <div class="selection-summary">
+        <span id="selected-symptom-count">0</span> symptom(s),
+        <span id="selected-code-count">0</span> code(s) selected
+      </div>
+      <button id="run-diagnosis" class="primary-btn">Run Diagnosis</button>
+    </div>
+
+    <section id="results" class="results-section"></section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
