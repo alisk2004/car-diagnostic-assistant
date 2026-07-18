@@ -106,15 +106,3 @@ pytest
 |Ali Skaineh 6485| AI reasoning engine + testing | `diagnosis_engine.py`, `tests/test_engine.py` |
 |Issa Jaafar 6582| Frontend UI | `templates/index.html`, `static/style.css`, `static/app.js` |
 |Mohamad saied 6670| Database content + docs | `schema.sql`, `seed_data.py`, `README.md` |
-
-### Suggested video presentation split
-
-- **Member 1**: Introduce the project, then walk through the Flask backend
-  and API routes (`app.py`) that tie everything together.
-- **Member 2**: Explain the rule-based reasoning engine (`diagnosis_engine.py`)
-  — how confidence scores are calculated — and show the test suite (`pytest`)
-  that verifies it.
-- **Member 3**: Demo the frontend live — run a symptom-based diagnosis and an
-  OBD-II code diagnosis.
-- **Member 4**: Walk through the database schema and seed data (real
-  symptoms, DTC codes, and faults) that power the whole system.
