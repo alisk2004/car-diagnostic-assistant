@@ -102,10 +102,10 @@ pytest
 
 | Member | Contribution | Files owned |
 |---|---|---|
-| _Name 1_ | Backend / API | `app.py`, `database.py` |
-| _Name 2_ | AI reasoning engine + testing | `diagnosis_engine.py`, `tests/test_engine.py` |
-| _Name 3_ | Frontend UI | `templates/index.html`, `static/style.css`, `static/app.js` |
-| _Name 4_ | Database content + docs | `schema.sql`, `seed_data.py`, `README.md` |
+|Karim Salloum 6454| Backend / API | `app.py`, `database.py` |
+|Ali Skaineh 6485| AI reasoning engine + testing | `diagnosis_engine.py`, `tests/test_engine.py` |
+|Issa Jaafar 6582| Frontend UI | `templates/index.html`, `static/style.css`, `static/app.js` |
+|Mohamad saied 6670| Database content + docs | `schema.sql`, `seed_data.py`, `README.md` |
 
 ### Suggested video presentation split
 
